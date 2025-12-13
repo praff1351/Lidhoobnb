@@ -1,6 +1,11 @@
-export { default } from 'next-auth/middleware';
+import { withAuth } from "next-auth/middleware";
 
+export default withAuth({
+  callbacks: {
+    authorized: ({ token }) => !!token,
+  },
+});
 
 export const config = {
-  matcher: ['/properties/add', '/profile', '/properties/saved', '/messages']
-}
+  matcher: ["/properties/add", "/profile", "/properties/saved", "/messages"],
+};
